@@ -1,11 +1,25 @@
 import React, { useState } from 'react'; 
+import axios from 'axios';
 import './contact-form.css';
 
 export const ContactForm = () => {
   const [data, setData] = useState({name: "", email: "", message: ""});
 
 
-  // name, an email, and a message
+  const sendData = async () => {
+    try {
+      const API_BASE_URL = 'https://o9996ksj5m.execute-api.us-east-2.amazonaws.com/live/';
+      const request = await axios.post(`${API_BASE_URL}`, {
+        query: data
+      })
+
+      console.log(request)
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
+
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
   };
@@ -13,6 +27,7 @@ export const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(data)
+    sendData()
   }
 
   return (
