@@ -8,11 +8,24 @@ export const ContactForm = () => {
 
   const sendData = async () => {
     try {
-      const API_BASE_URL = 'https://o9996ksj5m.execute-api.us-east-2.amazonaws.com/live/';
-      const request = await axios.post(`${API_BASE_URL}`, {
-        query: data
-      })
-
+      const API_BASE_URL = 'https://o9996ksj5m.execute-api.us-east-2.amazonaws.com/live';
+      const payload = {
+        item: {
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        },
+        "operation": "create",
+        "tableName": "ContactForm",
+      }
+      const config = {
+        method: 'POST',
+        payload,
+        url: API_BASE_URL
+      }  
+      const request = await axios(config)
+      
+      
       console.log(request)
     } catch(err) {
       console.error(err)
