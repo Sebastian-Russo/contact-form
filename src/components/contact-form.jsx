@@ -8,15 +8,14 @@ export const ContactForm = () => {
 
   const sendData = async () => {
     try {
-      const API_BASE_URL = 'https://o9996ksj5m.execute-api.us-east-2.amazonaws.com/live';
+      const API_BASE_URL = 'https://uzk3crusd9.execute-api.us-east-2.amazonaws.com/production/contact';
       const payload = {
         item: {
+          id: Math.floor(Math.random() * (999999999 - 0 + 1)) + 999999999,
           name: data.name,
           email: data.email,
-          message: data.message,
-        },
-        "operation": "create",
-        "tableName": "ContactForm",
+          message: data.message        
+        }
       }
       const config = {
         method: 'POST',
