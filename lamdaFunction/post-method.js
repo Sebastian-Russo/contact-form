@@ -19,6 +19,7 @@ exports.handler = async function(event) {
   return response;
 }
 
+// ********* LOOK INTO POST AND PUT REQUESTS 
 
 async function createContact(requestBody) {
   const params = {
@@ -39,16 +40,18 @@ async function createContact(requestBody) {
 
 
 function buildResponse(statusCode, body) {
-  return {
+  const response =  {
     statusCode,
     headers: {
       'Content-Type': 'application/json',
       "Access-Control-Allow-Headers" : "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
-      "Access-Control-Allow-Methods" : "OPTIONS,POST",
+      "Access-Control-Allow-Methods" : "OPTIONS,POST,PUT",
       "Access-Control-Allow-Credentials" : true,
       "Access-Control-Allow-Origin" : "*",
       "X-Requested-With" : "*"
     },
     body: JSON.stringify(body)
   }
+
+  return response; 
 }
