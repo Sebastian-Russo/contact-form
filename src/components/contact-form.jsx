@@ -3,6 +3,7 @@ import axios from 'axios';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -59,7 +60,7 @@ export const ContactForm = () => {
             type="text" 
             name="name" 
             value={data.name} 
-            placeholder="John Smith" 
+            placeholder="name" 
             onChange={handleChange} 
             required 
             variant="outlined"
@@ -79,13 +80,13 @@ export const ContactForm = () => {
             variant="outlined"
             margin="normal"
             fullWidth
-            label="Email Address"
+            label="Email"
             autoComplete="email"
             autoFocus
             />
       </div>
       <div className="row">
-        <TextField 
+        <TextareaAutosize
             type="textarea" 
             name="message" 
             value={data.message} 
@@ -94,7 +95,7 @@ export const ContactForm = () => {
             required 
             variant="outlined"
             margin="normal"
-            fullWidth
+            rowsMin="6"
             id="email"
             label="Leave a comment :)"
             autoFocus
